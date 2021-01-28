@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.util.Scanner;
 
 public class UserInfo
 {
@@ -13,7 +14,7 @@ public class UserInfo
     public UserInfo(int age, Date dob, String firstName, String lastName, String password, String userName, Boolean rememberUser) {
         this.age = age;
         this.dob = dob;
-        this.firstName = firstName;
+        this.firstName = validateFirstName(firstName);
         this.lastName = lastName;
         this.password = password;
         this.userName = userName;
@@ -25,7 +26,8 @@ public class UserInfo
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(int age)
+    {
         this.age = age;
     }
 
@@ -75,5 +77,19 @@ public class UserInfo
 
     public void setRememberUser(Boolean rememberUser) {
         this.rememberUser = rememberUser;
+    }
+
+    /*-------------------Validation---------------------------*/
+
+    private String validateFirstName(String firstName)
+    {
+        while(!firstName.matches("[A-Z][a-zA-Z]*"))
+        {
+            System.out.println("The first name you entered is in the wrong format.");
+            Scanner firstNameNew = new Scanner(System.in);
+            System.out.println("Enter a new first name:");
+            firstName = firstNameNew.nextLine();
+        }
+        return firstName;
     }
 }
