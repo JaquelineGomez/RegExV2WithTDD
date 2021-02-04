@@ -4,21 +4,17 @@ import java.util.Scanner;
 public class UserInfo
 {
     int age;
-    Date dob;
     String firstName;
     String lastName;
     String password;
     String userName;
-    Boolean rememberUser;
 
-    public UserInfo(int age, Date dob, String firstName, String lastName, String password, String userName, Boolean rememberUser) {
+    public UserInfo(int age, String firstName, String lastName, String password, String userName) {
         this.age = age;
-        this.dob = dob;
         this.firstName = validateFirstName(firstName);
-        this.lastName = lastName;
+        this.lastName = validateLastName(lastName);
         this.password = password;
         this.userName = userName;
-        this.rememberUser = rememberUser;
     }
 
     public int getAge()
@@ -31,13 +27,6 @@ public class UserInfo
         this.age = age;
     }
 
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -71,13 +60,6 @@ public class UserInfo
         this.userName = userName;
     }
 
-    public Boolean getRememberUser() {
-        return rememberUser;
-    }
-
-    public void setRememberUser(Boolean rememberUser) {
-        this.rememberUser = rememberUser;
-    }
 
     /*-------------------Validation---------------------------*/
 
@@ -91,5 +73,17 @@ public class UserInfo
             firstName = firstNameNew.nextLine();
         }
         return firstName;
+    }
+
+    private String validateLastName(String lastName)
+    {
+        while(!lastName.matches("[A-Z][a-zA-Z- ]*"))
+        {
+            System.out.println("The last name you entered is in the wrong format.");
+            Scanner lastNameNew = new Scanner(System.in);
+            System.out.println("Enter a new last name:");
+            lastName = lastNameNew.nextLine();
+        }
+        return lastName;
     }
 }
