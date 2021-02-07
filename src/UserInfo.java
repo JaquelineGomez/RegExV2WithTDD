@@ -3,37 +3,24 @@ import java.util.Scanner;
 
 public class UserInfo
 {
-    int age;
     String firstName;
     String lastName;
     String password;
-    String userName;
+    String phoneNumber;
 
-    public UserInfo(int age, String firstName, String lastName, String password, String userName) {
-        this.age = age;
+    public UserInfo(String firstName, String lastName, String password, String phoneNumber) {
         this.firstName = validateFirstName(firstName);
         this.lastName = validateLastName(lastName);
         this.password = validatePassword(password);
-        this.userName = userName;
+        this.phoneNumber = validatePhoneNumber(phoneNumber);
     }
-
-    public int getAge()
-    {
-        return age;
-    }
-
-    public void setAge(int age)
-    {
-        this.age = age;
-    }
-
 
     public String getFirstName() {
         return firstName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = validateFirstName(firstName);
     }
 
     public String getLastName() {
@@ -41,7 +28,7 @@ public class UserInfo
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = validateLastName(lastName);
     }
 
     public String getPassword() {
@@ -49,15 +36,15 @@ public class UserInfo
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = validatePassword(password);
     }
 
-    public String getUserName() {
-        return userName;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = validatePhoneNumber(phoneNumber);
     }
 
 
@@ -96,5 +83,19 @@ public class UserInfo
             System.out.println("Enter a new password name:");
             password = passwordNew.nextLine();
         }
-        return password;}
+        return password;
+    }
+
+
+    private String validatePhoneNumber(String phoneNumber)
+    {
+        while(!phoneNumber.matches("^\\(?([(][0-9]{3}[)])\\)?[-]?([0-9]{3})[-]?([0-9]{4})$"))
+        {
+            System.out.println("The phone number you entered is in the wrong format.");
+            Scanner phoneNew = new Scanner(System.in);
+            System.out.println("Enter a new phoneNumber name:");
+            phoneNumber = phoneNew.nextLine();
+        }
+        return phoneNumber;
+    }
 }
