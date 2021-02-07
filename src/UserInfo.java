@@ -104,7 +104,7 @@ public class UserInfo
 * */
     private String validatePhoneNumber(String phoneNumber)
     {
-        while(!phoneNumber.matches("^\\(?([(][0-9]{3}[)])\\)?[-]?([0-9]{3})[-]?([0-9]{4})$"))
+        while(!phoneNumber.matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"))
         {
             System.out.println("The phone number you entered is in the wrong format.");
             Scanner phoneNew = new Scanner(System.in);

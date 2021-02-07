@@ -3,8 +3,9 @@ public class Driver
 {
     public static  void  main(String[] args)
     {
-        UserInfo user1= new UserInfo("Sally1","Rogers1","324*3920","0");
+        UserInfo user1= new UserInfo("Sally","Rogers","324*3920A","0");
         System.out.print("First Name: "+ user1.getFirstName()+"\nLastName: " + user1.getLastName()+ "\nPassword: "+ user1.getPassword()+ "\nPhone Number: "+ user1.getPhoneNumber());
+
         /* Test cases (Insert everything in between "" to console when asked
         * First Name:
         * "Sally3"           - fail
@@ -28,10 +29,10 @@ public class Driver
         * "8a"                - fail
         * "A9*"               - pass
         * "a1}"               - pass
-        * "3x!"
-        * "3x@"
-        * "3x#"
-        * "3x&"
+        * "3x!"               - pass
+        * "3x@"               - pass
+        * "3x#"               - pass
+        * "3x&"               - every password below should pass
         * "3x()"
         * "3x-"
         * "3x_"
@@ -63,6 +64,7 @@ public class Driver
         * "(123)-456-789a"    - fail
         * "(123)-456-7890*"   - fail
         * "(123) 456 7890"    - fail
+        * "123-456-7890"      - fail
         * "(123)-456-7890"    - pass
         * */
     }
