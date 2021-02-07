@@ -84,11 +84,11 @@ public class UserInfo
     }
 
     /*
-    * Must Contain one letter(upper, one number, and one of the following special character: !@#&()–_[{}]:;',?/*~$^+=<>
+    * Must Contain one letter(upper, one number, and one of the following special character: !@#&()_[{}]:;',?/*~$^+=<>
     * */
     private String validatePassword(String password)
     {
-        while(!password.matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()–_[{}]:;',?/*~$^+=<>]+).*"))
+        while(!password.matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"))
         {
             System.out.println("The password you entered is in the wrong format.");
             Scanner passwordNew = new Scanner(System.in);

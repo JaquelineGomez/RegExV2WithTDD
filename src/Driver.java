@@ -27,6 +27,8 @@ public class Driver
         * "998*"              - fail
         * "9A"                - fail
         * "8a"                - fail
+        * "3x-"               - fail
+        * "3x" "              - fail
         * "A9*"               - pass
         * "a1}"               - pass
         * "3x!"               - pass
@@ -34,7 +36,7 @@ public class Driver
         * "3x#"               - pass
         * "3x&"               - every password below should pass
         * "3x()"
-        * "3x-"
+        *
         * "3x_"
         * "3x{}"
         * "3x:"
