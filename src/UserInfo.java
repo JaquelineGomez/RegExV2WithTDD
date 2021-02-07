@@ -13,7 +13,7 @@ public class UserInfo
         this.age = age;
         this.firstName = validateFirstName(firstName);
         this.lastName = validateLastName(lastName);
-        this.password = password;
+        this.password = validatePassword(password);
         this.userName = userName;
     }
 
@@ -86,4 +86,15 @@ public class UserInfo
         }
         return lastName;
     }
+
+    private String validatePassword(String password)
+    {
+        while(!password.matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()–_[{}]:;',?/*~$^+=<>]+).*"))
+        {
+            System.out.println("The password you entered is in the wrong format.");
+            Scanner passwordNew = new Scanner(System.in);
+            System.out.println("Enter a new password name:");
+            password = passwordNew.nextLine();
+        }
+        return password;}
 }
