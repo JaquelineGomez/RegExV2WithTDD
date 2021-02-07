@@ -50,6 +50,10 @@ public class UserInfo
 
     /*-------------------Validation---------------------------*/
 
+    /*Must begin with a capital letter
+    * Can be followed by lowercase or capital letters
+    * Can not have spaces, numbers,or special characters
+    * */
     private String validateFirstName(String firstName)
     {
         while(!firstName.matches("[A-Z][a-zA-Z]*"))
@@ -62,6 +66,11 @@ public class UserInfo
         return firstName;
     }
 
+    /*Must begin with an uppercase
+    * Can be followed by Capital or lowercase letters
+    * Can have a space or a -
+    * Can NOT have spaces, numbers,or special characters
+    * */
     private String validateLastName(String lastName)
     {
         while(!lastName.matches("[A-Z][a-zA-Z- ]*"))
@@ -74,6 +83,9 @@ public class UserInfo
         return lastName;
     }
 
+    /*
+    * Must Contain one letter(upper, one number, and one of the following special character: !@#&()–_[{}]:;',?/*~$^+=<>
+    * */
     private String validatePassword(String password)
     {
         while(!password.matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()–_[{}]:;',?/*~$^+=<>]+).*"))
@@ -86,7 +98,10 @@ public class UserInfo
         return password;
     }
 
-
+/*
+* Must be in (xxx)-xxx-xxxx format
+* Numbers no letters or special characters
+* */
     private String validatePhoneNumber(String phoneNumber)
     {
         while(!phoneNumber.matches("^\\(?([(][0-9]{3}[)])\\)?[-]?([0-9]{3})[-]?([0-9]{4})$"))
