@@ -3,7 +3,7 @@ public class Driver
 {
     public static  void  main(String[] args)
     {
-        UserInfo user1= new UserInfo("Sally","Rogers","324*3920A","0");
+        UserInfo user1= new UserInfo("Sally1","Rogers1","324*3920","0");
         System.out.print("First Name: "+ user1.getFirstName()+"\nLastName: " + user1.getLastName()+ "\nPassword: "+ user1.getPassword()+ "\nPhone Number: "+ user1.getPhoneNumber());
 
         /* Test cases (Insert everything in between "" to console when asked
