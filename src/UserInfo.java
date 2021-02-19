@@ -8,6 +8,14 @@ public class UserInfo
     String password;
     String phoneNumber;
 
+    public UserInfo()
+    {
+        firstName="";
+        lastName="";
+        password="";
+        phoneNumber="";
+    }
+
     public UserInfo(String firstName, String lastName, String password, String phoneNumber) {
         this.firstName = validateFirstName(firstName);
         this.lastName = validateLastName(lastName);
@@ -56,12 +64,9 @@ public class UserInfo
     * */
     private String validateFirstName(String firstName)
     {
-        while(!firstName.matches("[A-Z][a-zA-Z]*"))
+        if(!firstName.matches("[A-Z][a-zA-Z]*"))
         {
-            System.out.println("The first name you entered is in the wrong format.");
-            Scanner firstNameNew = new Scanner(System.in);
-            System.out.println("Enter a new first name:");
-            firstName = firstNameNew.nextLine();
+            System.out.println("The first name "+ firstName+" entered is in the wrong format.");
         }
         return firstName;
     }
