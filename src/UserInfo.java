@@ -66,7 +66,7 @@ public class UserInfo
     {
         if(!firstName.matches("[A-Z][a-zA-Z]*"))
         {
-            System.out.println("The first name "+ firstName+" entered is in the wrong format.");
+            System.out.println("The first name "+ firstName+" is in the wrong format.");
         }
         return firstName;
     }
@@ -79,7 +79,7 @@ public class UserInfo
     private String validateLastName(String lastName)
     {
         if(!lastName.matches("[A-Z][a-zA-Z- ]*")) {
-            System.out.println("The last name " + lastName + " you entered is in the wrong format.");
+            System.out.println("The last name " + lastName + " is in the wrong format.");
         }
         return lastName;
     }
@@ -89,12 +89,9 @@ public class UserInfo
     * */
     private String validatePassword(String password)
     {
-        while(!password.matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"))
+        if(!password.matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"))
         {
-            System.out.println("The password you entered is in the wrong format.");
-            Scanner passwordNew = new Scanner(System.in);
-            System.out.println("Enter a new password name:");
-            password = passwordNew.nextLine();
+            System.out.println("The password "+ password+" is in the wrong format.");
         }
         return password;
     }

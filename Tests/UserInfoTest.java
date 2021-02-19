@@ -121,6 +121,13 @@ class UserInfoTest
         assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
     }
 
+    @Test
+    void passwordNoNum()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("Xy*");
+        assertEquals("Xy*",passwordTest.getPassword());
+    }
 }
 /*
  *
