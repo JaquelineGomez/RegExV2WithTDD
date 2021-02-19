@@ -72,24 +72,57 @@ class UserInfoTest
     {
         UserInfo lastNameTester= new UserInfo();
         lastNameTester.setLastName("rogers");
-        assertEquals("rogers",lastNameTester.getLastName());
+       // assertEquals("rogers",lastNameTester.getLastName());
+        assertFalse(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
     }
+
+    @Test
+    void lastNameHasNum()
+    {
+        UserInfo lastNameTester= new UserInfo();
+        lastNameTester.setLastName("Rogers1");
+        // assertEquals("Rogers1",lastNameTester.getLastName());
+        assertFalse(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+    }
+
+    @Test
+    void lastNameHasSpecialCharacter()
+    {
+        UserInfo lastNameTester= new UserInfo();
+        lastNameTester.setLastName("Rogers#");
+        // assertEquals("Rogers#",lastNameTester.getLastName());
+        assertFalse(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+    }
+
+    @Test
+    void lastNameHasSpace()
+    {
+        UserInfo lastNameTester= new UserInfo();
+        lastNameTester.setLastName("Rogers Anderson");
+        // assertEquals("Rogers Anderson",lastNameTester.getLastName());
+        assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+    }
+
+    @Test
+    void lastNameHasHyphen()
+    {
+        UserInfo lastNameTester= new UserInfo();
+        lastNameTester.setLastName("Rogers-Gomez");
+        // assertEquals("Rogers-Gomez",lastNameTester.getLastName());
+        assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+    }
+
+    @Test
+    void lastNameHasMoreOneCapital()
+    {
+        UserInfo lastNameTester= new UserInfo();
+        lastNameTester.setLastName("Rogers McDaniel");
+        // assertEquals("Rogers McDaniel",lastNameTester.getLastName());
+        assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+    }
+
 }
-/* Test cases
- * First Name:
- * "Sally3"           - fail
- * "Sally A"          - should fail
- * "Sally-Emily"      - fail
- * "sally"            - Fail
- * "Sally"            - pass
- *
- * Last Names:
- * "rogers"            - fail
- * "Rogers1"           - fail
- * "Rogers#"           - fail
- * "Rogers A"          - pass
- * "Rogers-Gomez"      - pass
- * "Rogers McDaniel"   - pass
+/*
  *
  * "Password"
  * "Xy*"               - fail

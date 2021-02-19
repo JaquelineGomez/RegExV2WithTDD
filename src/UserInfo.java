@@ -79,7 +79,7 @@ public class UserInfo
     private String validateLastName(String lastName)
     {
         if(!lastName.matches("[A-Z][a-zA-Z- ]*")) {
-            System.out.println("The last name " + lastName + "you entered is in the wrong format.");
+            System.out.println("The last name " + lastName + " you entered is in the wrong format.");
         }
         return lastName;
     }
