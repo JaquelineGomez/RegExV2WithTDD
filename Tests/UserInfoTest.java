@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.regex.*;
@@ -64,6 +65,14 @@ class UserInfoTest
         firstNameTester.setFirstName("SallyG");
         //assertEquals("SallyG",firstNameTester.getFirstName());
         assertTrue(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
+    }
+
+    @Test
+    void lastNameBeginLowerCase()
+    {
+        UserInfo lastNameTester= new UserInfo();
+        lastNameTester.setLastName("rogers");
+        assertEquals("rogers",lastNameTester.getLastName());
     }
 }
 /* Test cases
