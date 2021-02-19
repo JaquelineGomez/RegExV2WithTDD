@@ -85,7 +85,7 @@ public class UserInfo
     }
 
     /*
-    * Must Contain one letter(upper, one number, and one of the following special character: !@#&()_[{}]:;',?/*~$^+=<>
+    * Must Contain one letter(upper/lowercase, one number, and one of the following special character: !@#&()_[{}]:;',?/*~$^+=<>
     * */
     private String validatePassword(String password)
     {

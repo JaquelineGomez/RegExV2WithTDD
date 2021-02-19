@@ -3,19 +3,17 @@ import org.junit.jupiter.api.TestTemplate;
 
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.regex.*;
-class UserInfoTest
-{
+class UserInfoTest {
     @Test
-    void firstNameBeginsCapital()
-    {
+    void firstNameBeginsCapital() {
         UserInfo firstNameTester = new UserInfo();
         firstNameTester.setFirstName("Sally");
         //assertEquals("Sally",firstNameTester.getFirstName());
         assertTrue(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
     }
+
     @Test
-    void firstNameBeginsLowerCase()
-    {
+    void firstNameBeginsLowerCase() {
         UserInfo firstNameTester = new UserInfo();
         firstNameTester.setFirstName("sally");
         //assertEquals("andy",firstNameTester.getFirstName());
@@ -23,17 +21,15 @@ class UserInfoTest
     }
 
     @Test
-    void firstNameWithSpace()
-    {
+    void firstNameWithSpace() {
         UserInfo firstNameTester = new UserInfo();
         firstNameTester.setFirstName("Sally Emily");
-       //assertEquals("Sally Emily",firstNameTester.getFirstName());
+        //assertEquals("Sally Emily",firstNameTester.getFirstName());
         assertFalse(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
     }
 
     @Test
-    void firstNameWithHyphen()
-    {
+    void firstNameWithHyphen() {
         UserInfo firstNameTester = new UserInfo();
         firstNameTester.setFirstName("Sally-Emily");
         //assertEquals("Sally-Emily",firstNameTester.getFirstName());
@@ -41,8 +37,7 @@ class UserInfoTest
     }
 
     @Test
-    void firstNameWithNum()
-    {
+    void firstNameWithNum() {
         UserInfo firstNameTester = new UserInfo();
         firstNameTester.setFirstName("Sally3");
         //assertEquals("Sally3",firstNameTester.getFirstName());
@@ -50,8 +45,7 @@ class UserInfoTest
     }
 
     @Test
-    void firstNameWithPeriod()
-    {
+    void firstNameWithPeriod() {
         UserInfo firstNameTester = new UserInfo();
         firstNameTester.setFirstName("Sally.");
         //assertEquals("Sally.",firstNameTester.getFirstName());
@@ -59,8 +53,7 @@ class UserInfoTest
     }
 
     @Test
-    void firstNameWithDoubleUpperCase()
-    {
+    void firstNameWithDoubleUpperCase() {
         UserInfo firstNameTester = new UserInfo();
         firstNameTester.setFirstName("SallyG");
         //assertEquals("SallyG",firstNameTester.getFirstName());
@@ -68,100 +61,297 @@ class UserInfoTest
     }
 
     @Test
-    void lastNameBeginLowerCase()
-    {
-        UserInfo lastNameTester= new UserInfo();
+    void lastNameBeginLowerCase() {
+        UserInfo lastNameTester = new UserInfo();
         lastNameTester.setLastName("rogers");
-       // assertEquals("rogers",lastNameTester.getLastName());
-        assertFalse(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+        // assertEquals("rogers",lastNameTester.getLastName());
+        assertFalse(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*"));
     }
 
     @Test
-    void lastNameHasNum()
-    {
-        UserInfo lastNameTester= new UserInfo();
+    void lastNameHasNum() {
+        UserInfo lastNameTester = new UserInfo();
         lastNameTester.setLastName("Rogers1");
         // assertEquals("Rogers1",lastNameTester.getLastName());
-        assertFalse(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+        assertFalse(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*"));
     }
 
     @Test
-    void lastNameHasSpecialCharacter()
-    {
-        UserInfo lastNameTester= new UserInfo();
+    void lastNameHasSpecialCharacter() {
+        UserInfo lastNameTester = new UserInfo();
         lastNameTester.setLastName("Rogers#");
         // assertEquals("Rogers#",lastNameTester.getLastName());
-        assertFalse(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+        assertFalse(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*"));
     }
 
     @Test
-    void lastNameHasSpace()
-    {
-        UserInfo lastNameTester= new UserInfo();
+    void lastNameHasSpace() {
+        UserInfo lastNameTester = new UserInfo();
         lastNameTester.setLastName("Rogers Anderson");
         // assertEquals("Rogers Anderson",lastNameTester.getLastName());
-        assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+        assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*"));
     }
 
     @Test
-    void lastNameHasHyphen()
-    {
-        UserInfo lastNameTester= new UserInfo();
+    void lastNameHasHyphen() {
+        UserInfo lastNameTester = new UserInfo();
         lastNameTester.setLastName("Rogers-Gomez");
         // assertEquals("Rogers-Gomez",lastNameTester.getLastName());
-        assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+        assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*"));
     }
 
     @Test
-    void lastNameHasMoreOneCapital()
-    {
-        UserInfo lastNameTester= new UserInfo();
+    void lastNameHasMoreOneCapital() {
+        UserInfo lastNameTester = new UserInfo();
         lastNameTester.setLastName("Rogers McDaniel");
         // assertEquals("Rogers McDaniel",lastNameTester.getLastName());
-        assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*") );
+        assertTrue(lastNameTester.getLastName().matches("[A-Z][a-zA-Z- ]*"));
     }
 
     @Test
-    void passwordNoNum()
+    void passwordNoNum() {
+        UserInfo passwordTest = new UserInfo();
+        passwordTest.setPassword("Xy*");
+        //assertEquals("Xy*",passwordTest.getPassword());
+        assertFalse(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordNoLetters() {
+        UserInfo passwordTest = new UserInfo();
+        passwordTest.setPassword("998*");
+        //assertEquals("998*",passwordTest.getPassword());
+        assertFalse(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordNoSpecialCharacter() {
+        UserInfo passwordTest = new UserInfo();
+        passwordTest.setPassword("9A");
+        //assertEquals("9A",passwordTest.getPassword());
+        assertFalse(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+    @Test
+    void passwordOtherCharacter_dash()
     {
         UserInfo passwordTest= new UserInfo();
-        passwordTest.setPassword("Xy*");
-        assertEquals("Xy*",passwordTest.getPassword());
+        passwordTest.setPassword("3x-");
+        //assertEquals("3x-",passwordTest.getPassword());
+        assertFalse(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+    @Test
+    void passwordOtherCharacter_quote()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x\"");
+        //assertEquals("3x\"",passwordTest.getPassword());
+        assertFalse(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+    @Test
+    void passwordUpperNumAndAsterisk()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("A9*");
+        //assertEquals("A9*",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+    @Test
+    void passwordLowerNumAndAsterisk()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("a9*");
+        //assertEquals("a9*",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndExclamation()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x!");
+        //assertEquals("3x!",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndAtSign()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x@");
+        //assertEquals("3x@",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndHastag()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x#");
+        //assertEquals("3x#",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndSign()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x&");
+        //assertEquals("3x&",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndParenthesis()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x()");
+        //assertEquals("3x()",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndUnderscore()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x_");
+        //assertEquals("3x_",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndCurlyBrackets()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x{}");
+        //assertEquals("3x{}",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndColon()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x:");
+        //assertEquals("3x:",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndSemiColon()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x;");
+        //assertEquals("3x;",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+    @Test
+    void passwordLowerNumAndApostrophe()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x'");
+        //assertEquals("3x'",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndComma()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x,");
+        //assertEquals("3x,",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndQuestionMark()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x?");
+        //assertEquals("3x?",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+    @Test
+    void passwordLowerNumAndFrontSlash()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x/");
+        //assertEquals("3x/",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndBackSlash()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x\\");
+        //assertEquals("3x\\",passwordTest.getPassword());
+        assertFalse(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndTilde()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x~");
+        //assertEquals("3x~",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndDollarSign()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x$");
+        //assertEquals("3x$",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndPlusSign()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x+");
+        //assertEquals("3x+",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndLessThanSign()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x<");
+        //assertEquals("3x<",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndGreaterThanSign()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x>");
+        //assertEquals("3x>",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndEqualThanSign()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x=");
+        //assertEquals("3x=",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
+    }
+
+    @Test
+    void passwordLowerNumAndCaret()
+    {
+        UserInfo passwordTest= new UserInfo();
+        passwordTest.setPassword("3x^");
+        //assertEquals("3x^",passwordTest.getPassword());
+        assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
     }
 }
 /*
- *
- * "Password"
- * "Xy*"               - fail
- * "998*"              - fail
- * "9A"                - fail
- * "8a"                - fail
- * "3x-"               - fail
- * "3x" "              - fail
- * "A9*"               - pass
- * "a1}"               - pass
- * "3x!"               - pass
- * "3x@"               - pass
- * "3x#"               - pass
- * "3x&"               - every password below should pass
- * "3x()"
- *
- * "3x_"
- * "3x{}"
- * "3x:"
- * "3x;"
- * "3x'"
- * "3x,"
- * "3x?"
- * "3x/"
- * "3x~"
- * "3x$"
- * "3x^"
- * "3x+"
- * "3x="
- * "3x<"
- * "3x>"
- *
  *
  * Phone Numbers:
  * "1234567890"        - fail
