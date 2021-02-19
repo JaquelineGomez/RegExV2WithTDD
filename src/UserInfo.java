@@ -102,12 +102,9 @@ public class UserInfo
 * */
     private String validatePhoneNumber(String phoneNumber)
     {
-        while(!phoneNumber.matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"))
+        if(!phoneNumber.matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"))
         {
-            System.out.println("The phone number you entered is in the wrong format.");
-            Scanner phoneNew = new Scanner(System.in);
-            System.out.println("Enter a new phoneNumber name:");
-            phoneNumber = phoneNew.nextLine();
+            System.out.println("The phone number "+phoneNumber+" is in the wrong format.");
         }
         return phoneNumber;
     }

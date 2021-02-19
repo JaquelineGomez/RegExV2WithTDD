@@ -350,6 +350,14 @@ class UserInfoTest {
         //assertEquals("3x^",passwordTest.getPassword());
         assertTrue(passwordTest.getPassword().matches("(?=.*[A-Za-z]+)(?=.*[0-9]+)(?=.*[!@#&()_[{}]:;',?/*~$^+=<>]+).*"));
     }
+
+    @Test
+    void phoneOnlyNum()
+    {
+        UserInfo phoneOnlyNum = new UserInfo();
+        phoneOnlyNum.setPhoneNumber("1234567890");
+        assertEquals("1234567890",phoneOnlyNum.getPhoneNumber());
+    }
 }
 /*
  *
