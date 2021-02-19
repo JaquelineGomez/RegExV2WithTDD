@@ -9,9 +9,62 @@ class UserInfoTest
     {
         UserInfo firstNameTester = new UserInfo();
         firstNameTester.setFirstName("Sally");
-        assertEquals("Sally",firstNameTester.getFirstName());
+        //assertEquals("Sally",firstNameTester.getFirstName());
+        assertTrue(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
+    }
+    @Test
+    void firstNameBeginsLowerCase()
+    {
+        UserInfo firstNameTester = new UserInfo();
+        firstNameTester.setFirstName("sally");
+        //assertEquals("andy",firstNameTester.getFirstName());
+        assertFalse(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
     }
 
+    @Test
+    void firstNameWithSpace()
+    {
+        UserInfo firstNameTester = new UserInfo();
+        firstNameTester.setFirstName("Sally Emily");
+       //assertEquals("Sally Emily",firstNameTester.getFirstName());
+        assertFalse(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
+    }
+
+    @Test
+    void firstNameWithHyphen()
+    {
+        UserInfo firstNameTester = new UserInfo();
+        firstNameTester.setFirstName("Sally-Emily");
+        //assertEquals("Sally-Emily",firstNameTester.getFirstName());
+        assertFalse(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
+    }
+
+    @Test
+    void firstNameWithNum()
+    {
+        UserInfo firstNameTester = new UserInfo();
+        firstNameTester.setFirstName("Sally3");
+        //assertEquals("Sally3",firstNameTester.getFirstName());
+        assertFalse(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
+    }
+
+    @Test
+    void firstNameWithPeriod()
+    {
+        UserInfo firstNameTester = new UserInfo();
+        firstNameTester.setFirstName("Sally.");
+        //assertEquals("Sally.",firstNameTester.getFirstName());
+        assertFalse(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
+    }
+
+    @Test
+    void firstNameWithDoubleUpperCase()
+    {
+        UserInfo firstNameTester = new UserInfo();
+        firstNameTester.setFirstName("SallyG");
+        //assertEquals("SallyG",firstNameTester.getFirstName());
+        assertTrue(firstNameTester.getFirstName().matches("[A-Z][a-zA-Z]*"));
+    }
 }
 /* Test cases
  * First Name:
