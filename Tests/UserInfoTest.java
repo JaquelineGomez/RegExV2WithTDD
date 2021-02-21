@@ -356,23 +356,115 @@ class UserInfoTest {
     {
         UserInfo phoneOnlyNum = new UserInfo();
         phoneOnlyNum.setPhoneNumber("1234567890");
-        assertEquals("1234567890",phoneOnlyNum.getPhoneNumber());
+      //  assertEquals("1234567890",phoneOnlyNum.getPhoneNumber());
+        assertFalse(phoneOnlyNum.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneWithLetterNoFormat()
+    {
+        UserInfo phoneWithLetterNoFormat = new UserInfo();
+        phoneWithLetterNoFormat.setPhoneNumber("a123456789");
+        //assertEquals("a123456789",phoneWithLetterNoFormat.getPhoneNumber());
+        assertFalse(phoneWithLetterNoFormat.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneNoDashesWithParenthesis()
+    {
+        UserInfo phoneNoDashesWithParenthesis = new UserInfo();
+        phoneNoDashesWithParenthesis.setPhoneNumber("(123)4567890");
+        //assertEquals("(123)4567890", phoneNoDashesWithParenthesis.getPhoneNumber());
+        assertFalse(phoneNoDashesWithParenthesis.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneOneDashesWithParenthesis()
+    {
+        UserInfo phoneOneDashesWithParenthesis = new UserInfo();
+        phoneOneDashesWithParenthesis.setPhoneNumber("(123)456-7890");
+        //assertEquals("(123)456-7890", phoneOneDashesWithParenthesis.getPhoneNumber());
+        assertFalse(phoneOneDashesWithParenthesis.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneMoreDigits1()
+    {
+        UserInfo phoneMoreDigits = new UserInfo();
+        phoneMoreDigits.setPhoneNumber("(1234)-456-7890");
+        //assertEquals("(1234)-456-7890", phoneMoreDigits.getPhoneNumber());
+        assertFalse(phoneMoreDigits.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneMoreDigits2()
+    {
+        UserInfo phoneMoreDigits2 = new UserInfo();
+        phoneMoreDigits2.setPhoneNumber("(123)-4567-890");
+        //assertEquals("(123)-4567-890", phoneMoreDigits2.getPhoneNumber());
+        assertFalse(phoneMoreDigits2.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneMoreDigits3()
+    {
+        UserInfo phoneMoreDigits3 = new UserInfo();
+        phoneMoreDigits3.setPhoneNumber("(123)-456-78901");
+        //assertEquals("(123)-456-78901", phoneMoreDigits3.getPhoneNumber());
+        assertFalse(phoneMoreDigits3.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneLessDigits()
+    {
+        UserInfo phoneLessDigits = new UserInfo();
+        phoneLessDigits.setPhoneNumber("(123)-456-789");
+        //assertEquals("(123)-456-789", phoneLessDigits.getPhoneNumber());
+        assertFalse(phoneLessDigits.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneSpecialCharacter()
+    {
+        UserInfo phoneSpecialCharacter = new UserInfo();
+        phoneSpecialCharacter.setPhoneNumber("(123)-456-7890*");
+        //assertEquals("(123)-456-7890*", phoneSpecialCharacter.getPhoneNumber());
+        assertFalse(phoneSpecialCharacter.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneWithLetterAndFormat()
+    {
+        UserInfo phoneWithLetterAndFormat = new UserInfo();
+        phoneWithLetterAndFormat.setPhoneNumber("(123)-456-789a");
+        //assertEquals("(123)-456-789a",phoneWithLetterAndFormat.getPhoneNumber());
+        assertFalse(phoneWithLetterAndFormat.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneWithSpaces()
+    {
+        UserInfo phoneWithSpaces = new UserInfo();
+        phoneWithSpaces.setPhoneNumber("123 456 7890");
+        //assertEquals("123 456 7890",phoneWithSpaces.getPhoneNumber());
+        assertFalse(phoneWithSpaces.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneWithDashesNoParenthesis()
+    {
+        UserInfo phoneWithDashesNoParenthesis = new UserInfo();
+        phoneWithDashesNoParenthesis.setPhoneNumber("123-456-7890");
+        //assertEquals("123-456-7890",phoneWithDashesNoParenthesis.getPhoneNumber());
+        assertFalse(phoneWithDashesNoParenthesis.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void phoneCorrectFormat()
+    {
+        UserInfo phoneCorrectFormat = new UserInfo();
+        phoneCorrectFormat.setPhoneNumber("(123)-456-7890");
+        //assertEquals("(123)-456-7890",phoneCorrectFormat.getPhoneNumber());
+        assertTrue(phoneCorrectFormat.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
     }
 }
-/*
- *
- * Phone Numbers:
- * "1234567890"        - fail
- * "a123456789"        - fail
- * "(123)4567890"      - fail
- * "(123)456-7890"     - fail
- * "(1234)-456-7890"   - fail
- * "(123)-4567-890"    - fail
- * "(123)-456-789"     - fail
- * "(123)-456-78910"   - fail
- * "(123)-456-789a"    - fail
- * "(123)-456-7890*"   - fail
- * "(123) 456 7890"    - fail
- * "123-456-7890"      - fail
- * "(123)-456-7890"    - pass
- * */
