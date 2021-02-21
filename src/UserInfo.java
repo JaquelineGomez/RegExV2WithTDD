@@ -108,4 +108,14 @@ public class UserInfo
         }
         return phoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
 }

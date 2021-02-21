@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestTemplate;
-
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.regex.*;
+
 class UserInfoTest {
     @Test
     void firstNameBeginsCapital() {
@@ -466,5 +464,21 @@ class UserInfoTest {
         phoneCorrectFormat.setPhoneNumber("(123)-456-7890");
         //assertEquals("(123)-456-7890",phoneCorrectFormat.getPhoneNumber());
         assertTrue(phoneCorrectFormat.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
+    }
+
+    @Test
+    void initialToString()
+    {
+        UserInfo person1= new UserInfo("Sally","Rogers","134P*","(123)-456-7890");
+        String expected = "UserInfo{firstName='Sally', lastName='Rogers', password='134P*', phoneNumber='(123)-456-7890'}";
+        assertEquals(expected,person1.toString());
+    }
+
+    @Test
+    void defaultConstructor()
+    {
+        UserInfo blankPerson = new UserInfo();
+        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber=''}";
+        assertEquals(expected, blankPerson.toString());
     }
 }
