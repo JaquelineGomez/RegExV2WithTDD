@@ -165,6 +165,33 @@ public class UserInfo
         return output;
     }
 
+    public String welcomeMessage()
+    {
+        String output="";
+        if(language.equalsIgnoreCase("English"))
+        {
+            output="Thank you for using our program ٩( ^ᴗ^ )۶";
+        }
+        else if(language.equalsIgnoreCase("French"))
+        {
+            output="Merci d'utiliser notre programme ٩( ^ᴗ^ )۶";
+        }
+        else if(language.equalsIgnoreCase("Spanish"))
+        {
+            output="Gracias por utilizar nuestro programa ٩( ^ᴗ^ )۶";
+        }
+        else if(language.equalsIgnoreCase("Chinese"))
+        {
+            output="謝謝您使用我們的程序 ٩( ^ᴗ^ )۶";
+        }
+        else
+        {
+            output= "I'm sorry we currently don't support other languages (╥﹏╥ )";
+        }
+
+        return output;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +

@@ -354,7 +354,7 @@ class UserInfoTest {
     {
         UserInfo phoneOnlyNum = new UserInfo();
         phoneOnlyNum.setPhoneNumber("1234567890");
-      //  assertEquals("1234567890",phoneOnlyNum.getPhoneNumber());
+        //  assertEquals("1234567890",phoneOnlyNum.getPhoneNumber());
         assertFalse(phoneOnlyNum.getPhoneNumber().matches("^\\(?([0-9]{3})\\)[-]([0-9]{3})[-]([0-9]{4})$"));
     }
 
@@ -625,10 +625,10 @@ class UserInfoTest {
     @Test
     void languageGetterNSetter_Chinese()
     {
-        UserInfo spanish = new UserInfo();
-        spanish.setLanguage("Chinese");
+        UserInfo chinese = new UserInfo();
+        chinese.setLanguage("Chinese");
         String expected = "Chinese";
-        assertEquals(expected, spanish.getLanguage());
+        assertEquals(expected, chinese.getLanguage());
     }
 
     @Test
@@ -640,4 +640,48 @@ class UserInfoTest {
         assertEquals(expected, french.getLanguage());
     }
 
+    @Test
+    void languageEnglish()
+    {
+        UserInfo english = new UserInfo();
+        english.setLanguage("English");
+        String expected = "Thank you for using our program ٩( ^ᴗ^ )۶";
+        assertEquals(expected, english.welcomeMessage());
+    }
+
+    @Test
+    void languageSpanish()
+    {
+        UserInfo spanish = new UserInfo();
+        spanish.setLanguage("Spanish");
+        String expected = "Gracias por utilizar nuestro programa ٩( ^ᴗ^ )۶";
+        assertEquals(expected, spanish.welcomeMessage());
+    }
+
+    @Test
+    void languageFrench()
+    {
+        UserInfo french = new UserInfo();
+        french.setLanguage("French");
+        String expected = "Merci d'utiliser notre programme ٩( ^ᴗ^ )۶";
+        assertEquals(expected, french.welcomeMessage());
+    }
+
+    @Test
+    void languageChinese()
+    {
+        UserInfo chinese = new UserInfo();
+        chinese.setLanguage("Chinese");
+        String expected = "謝謝您使用我們的程序 ٩( ^ᴗ^ )۶";
+        assertEquals(expected, chinese.welcomeMessage());
+    }
+
+    @Test
+    void languagePortuguese()
+    {
+        UserInfo portuguese = new UserInfo();
+        portuguese.setLanguage("Portuguese");
+        String expected = "I'm sorry we currently don't support other languages (╥﹏╥ )";
+        assertEquals(expected, portuguese.welcomeMessage());
+    }
 }
