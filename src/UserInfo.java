@@ -17,14 +17,16 @@ public class UserInfo
         password="";
         phoneNumber="";
         age=0;
+        language="English";
     }
 
-    public UserInfo(String firstName, String lastName, String password, String phoneNumber, int age) {
+    public UserInfo(String firstName, String lastName, String password, String phoneNumber, int age, String language) {
         this.firstName = validateFirstName(firstName);
         this.lastName = validateLastName(lastName);
         this.password = validatePassword(password);
         this.phoneNumber = validatePhoneNumber(phoneNumber);
         this.age=validateAge(age);
+        this.language= language;
     }
 
     public String getFirstName() {
@@ -170,7 +172,8 @@ public class UserInfo
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", age='" + age +
+                ", age='" + age +'\''+
+                ", language='" + language +
                 "'}";
     }
 }

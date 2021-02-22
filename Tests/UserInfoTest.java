@@ -469,8 +469,8 @@ class UserInfoTest {
     @Test
     void initialToString()
     {
-        UserInfo person1= new UserInfo("Sally","Rogers","134P*","(123)-456-7890",1);
-        String expected = "UserInfo{firstName='Sally', lastName='Rogers', password='134P*', phoneNumber='(123)-456-7890', age='1'}";
+        UserInfo person1= new UserInfo("Sally","Rogers","134P*","(123)-456-7890",1,"English");
+        String expected = "UserInfo{firstName='Sally', lastName='Rogers', password='134P*', phoneNumber='(123)-456-7890', age='1', language='English'}";
         assertEquals(expected,person1.toString());
     }
 
@@ -478,8 +478,48 @@ class UserInfoTest {
     void defaultConstructor()
     {
         UserInfo blankPerson = new UserInfo();
-        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='0'}";
+        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='0', language='English'}";
         assertEquals(expected, blankPerson.toString());
+    }
+
+    @Test
+    void constructorNegativeAge()
+    {
+        UserInfo person1= new UserInfo("Sally","Rogers","134P*","(123)-456-7890",-1,"English");
+        String expected = "UserInfo{firstName='Sally', lastName='Rogers', password='134P*', phoneNumber='(123)-456-7890', age='0', language='English'}";
+        assertEquals(expected,person1.toString());
+    }
+
+    @Test
+    void constructorWrongFirstName()
+    {
+        UserInfo person1= new UserInfo("Sally1","Rogers","134P*","(123)-456-7890",1,"English");
+        String expected = "UserInfo{firstName='Sally1', lastName='Rogers', password='134P*', phoneNumber='(123)-456-7890', age='1', language='English'}";
+        assertEquals(expected,person1.toString());
+    }
+
+    @Test
+    void constructorWrongLastName()
+    {
+        UserInfo person= new UserInfo("Sally","rogers","134P*","(123)-456-7890",1,"English");
+        String expected = "UserInfo{firstName='Sally', lastName='rogers', password='134P*', phoneNumber='(123)-456-7890', age='1', language='English'}";
+        assertEquals(expected,person.toString());
+    }
+
+    @Test
+    void constructorWrongPassword()
+    {
+        UserInfo person= new UserInfo("Sally","rogers","134P","(123)-456-7890",1,"English");
+        String expected = "UserInfo{firstName='Sally', lastName='rogers', password='134P', phoneNumber='(123)-456-7890', age='1', language='English'}";
+        assertEquals(expected,person.toString());
+    }
+
+    @Test
+    void constructorWrongPhone()
+    {
+        UserInfo person= new UserInfo("Sally","rogers","134P*","123-456-7890",1,"English");
+        String expected = "UserInfo{firstName='Sally', lastName='rogers', password='134P*', phoneNumber='123-456-7890', age='1', language='English'}";
+        assertEquals(expected,person.toString());
     }
 
     @Test
@@ -487,7 +527,7 @@ class UserInfoTest {
     {
         UserInfo person1= new UserInfo();
         person1.setAge(5);
-        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='5'}";
+        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='5', language='English'}";
         assertEquals(expected, person1.toString());
     }
 
@@ -496,7 +536,7 @@ class UserInfoTest {
     {
         UserInfo person = new UserInfo();
         person.setAge(-5);
-        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='0'}";
+        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='0', language='English'}";
         assertEquals(expected, person.toString());
     }
 
@@ -505,7 +545,7 @@ class UserInfoTest {
     {
         UserInfo person = new UserInfo();
         person.setAge(500);
-        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='117'}";
+        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='117', language='English'}";
         assertEquals(expected, person.toString());
     }
 
