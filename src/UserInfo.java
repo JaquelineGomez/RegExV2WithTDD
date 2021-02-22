@@ -135,6 +135,25 @@ public class UserInfo
     }
 
 
+  /*Brain Method*/
+    public String canUse()
+    {
+        String output = "";
+        if(age<13)
+        {
+            output = "I'm sorry, you are to young to use the app.（◞‸◟ ）";
+        }
+        else if(age>=18)
+        {
+            output = "Thank you for using our app (✿╹◡╹)";
+        }
+        else if(age>=13)
+        {
+            output = "You need your parents permission to use our app.";
+        }
+        return output;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +

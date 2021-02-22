@@ -509,4 +509,60 @@ class UserInfoTest {
         assertEquals(expected, person.toString());
     }
 
+    @Test
+    void babyCanNotUseApp()
+    {
+        UserInfo baby = new UserInfo();
+        baby.setAge(1);
+        String expected= "I'm sorry, you are to young to use the app.（◞‸◟ ）";
+        assertEquals(expected,baby.canUse());
+    }
+
+    @Test
+    void negativeAge()
+    {
+        UserInfo unborn = new UserInfo();
+        unborn.setAge(1);
+        String expected= "I'm sorry, you are to young to use the app.（◞‸◟ ）";
+        assertEquals(expected,unborn.canUse());
+    }
+
+    @Test
+    void EighteenYOCanUse()
+    {
+        UserInfo adult = new UserInfo();
+        adult.setAge(18);
+        String expected= "Thank you for using our app (✿╹◡╹)";
+        assertEquals(expected,adult.canUse());
+    }
+
+    @Test
+    void FortyYOCanUse()
+    {
+        UserInfo adult = new UserInfo();
+        adult.setAge(40);
+        String expected= "Thank you for using our app (✿╹◡╹)";
+        assertEquals(expected,adult.canUse());
+    }
+
+
+    @Test
+    void youngerEighteen()
+    {
+        UserInfo teen = new UserInfo();
+        teen.setAge(13);
+        String expected = "You need your parents permission to use our app.";
+        assertEquals(expected,teen.canUse());
+    }
+
+    @Test
+    void tenYO()
+    {
+        UserInfo kid = new UserInfo();
+        kid.setAge(10);
+        String expected = "I'm sorry, you are to young to use the app.（◞‸◟ ）";
+        assertEquals(expected,kid.canUse());
+    }
+
+
 }
