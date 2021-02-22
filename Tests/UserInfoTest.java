@@ -469,8 +469,8 @@ class UserInfoTest {
     @Test
     void initialToString()
     {
-        UserInfo person1= new UserInfo("Sally","Rogers","134P*","(123)-456-7890");
-        String expected = "UserInfo{firstName='Sally', lastName='Rogers', password='134P*', phoneNumber='(123)-456-7890'}";
+        UserInfo person1= new UserInfo("Sally","Rogers","134P*","(123)-456-7890",1);
+        String expected = "UserInfo{firstName='Sally', lastName='Rogers', password='134P*', phoneNumber='(123)-456-7890', age='1'}";
         assertEquals(expected,person1.toString());
     }
 
@@ -478,7 +478,7 @@ class UserInfoTest {
     void defaultConstructor()
     {
         UserInfo blankPerson = new UserInfo();
-        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber=''}";
+        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='0'}";
         assertEquals(expected, blankPerson.toString());
     }
 }

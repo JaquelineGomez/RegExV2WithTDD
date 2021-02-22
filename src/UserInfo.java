@@ -7,20 +7,22 @@ public class UserInfo
     String lastName;
     String password;
     String phoneNumber;
-
+    int age;
     public UserInfo()
     {
         firstName="";
         lastName="";
         password="";
         phoneNumber="";
+        age=0;
     }
 
-    public UserInfo(String firstName, String lastName, String password, String phoneNumber) {
+    public UserInfo(String firstName, String lastName, String password, String phoneNumber, int age) {
         this.firstName = validateFirstName(firstName);
         this.lastName = validateLastName(lastName);
         this.password = validatePassword(password);
         this.phoneNumber = validatePhoneNumber(phoneNumber);
+        this.age=age;
     }
 
     public String getFirstName() {
@@ -116,6 +118,7 @@ public class UserInfo
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
+                ", age='" + age +
+                "'}";
     }
 }
