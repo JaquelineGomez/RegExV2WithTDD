@@ -481,4 +481,32 @@ class UserInfoTest {
         String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='0'}";
         assertEquals(expected, blankPerson.toString());
     }
+
+    @Test
+    void ageGetNSet()
+    {
+        UserInfo person1= new UserInfo();
+        person1.setAge(5);
+        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='5'}";
+        assertEquals(expected, person1.toString());
+    }
+
+    @Test
+    void ageNegativeGetNSet()
+    {
+        UserInfo person = new UserInfo();
+        person.setAge(-5);
+        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='0'}";
+        assertEquals(expected, person.toString());
+    }
+
+    @Test
+    void ageLargeGetNSet()
+    {
+        UserInfo person = new UserInfo();
+        person.setAge(500);
+        String expected = "UserInfo{firstName='', lastName='', password='', phoneNumber='', age='117'}";
+        assertEquals(expected, person.toString());
+    }
+
 }

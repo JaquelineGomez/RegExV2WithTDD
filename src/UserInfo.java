@@ -22,7 +22,7 @@ public class UserInfo
         this.lastName = validateLastName(lastName);
         this.password = validatePassword(password);
         this.phoneNumber = validatePhoneNumber(phoneNumber);
-        this.age=age;
+        this.age=validateAge(age);
     }
 
     public String getFirstName() {
@@ -57,6 +57,13 @@ public class UserInfo
         this.phoneNumber = validatePhoneNumber(phoneNumber);
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = validateAge(age);
+    }
 
     /*-------------------Validation---------------------------*/
 
@@ -110,6 +117,23 @@ public class UserInfo
         }
         return phoneNumber;
     }
+
+
+    private int validateAge(int age)
+    {
+        if(age<0)
+        {
+            System.out.println("You can't have a negative age (╬≖_≖)");
+            age = 0;
+        }
+        if(age>117)
+        {
+            System.out.println("You can't be older than the oldest person alive (╯°□°）╯");
+            age = 117;
+        }
+        return age;
+    }
+
 
     @Override
     public String toString() {
