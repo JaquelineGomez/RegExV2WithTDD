@@ -564,5 +564,40 @@ class UserInfoTest {
         assertEquals(expected,kid.canUse());
     }
 
+    @Test
+    void languageGetterNSetter()
+    {
+        UserInfo english = new UserInfo();
+        english.setLanguage("English");
+        String expected = "English";
+        assertEquals(expected, english.getLanguage());
+    }
+
+    @Test
+    void languageGetterNSetter_Spanish()
+    {
+        UserInfo spanish = new UserInfo();
+        spanish.setLanguage("Spanish");
+        String expected = "Spanish";
+        assertEquals(expected, spanish.getLanguage());
+    }
+
+    @Test
+    void languageGetterNSetter_Chinese()
+    {
+        UserInfo spanish = new UserInfo();
+        spanish.setLanguage("Chinese");
+        String expected = "Chinese";
+        assertEquals(expected, spanish.getLanguage());
+    }
+
+    @Test
+    void languageGetterNSetter_French()
+    {
+        UserInfo french = new UserInfo();
+        french.setLanguage("French");
+        String expected = "French";
+        assertEquals(expected, french.getLanguage());
+    }
 
 }

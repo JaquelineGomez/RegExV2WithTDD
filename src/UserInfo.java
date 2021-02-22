@@ -8,6 +8,8 @@ public class UserInfo
     String password;
     String phoneNumber;
     int age;
+    String language;
+
     public UserInfo()
     {
         firstName="";
@@ -65,6 +67,13 @@ public class UserInfo
         this.age = validateAge(age);
     }
 
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
     /*-------------------Validation---------------------------*/
 
     /*Must begin with a capital letter
